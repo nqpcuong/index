@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Giới thiệu bản thân</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, #74ebd5, #ACB6E5);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      text-align: center;
+      color: #fff;
+    }
+
+    .container {
+      padding: 60px 20px;
+    }
+
+    h1 {
+      font-size: 48px;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 5px #333;
+    }
+
+    img {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      border: 5px solid white;
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+      object-fit: cover;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 20px;
+      max-width: 600px;
+      margin: auto;
+      line-height: 1.6;
+    }
+
+    footer {
+      margin-top: 40px;
+      font-size: 14px;
+      opacity: 0.8;
+    }
+
+    audio {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Xin chào, mình là YCN</h1>
+    <!-- Thay ảnh nếu không hiện -->
+    <img src="Skirk.full.4053828.jpg" alt="Ảnh đại diện">
+    <p>Mình đam mê công nghệ, thích tìm hiểu về lập trình, điện tử, và luôn sẵn sàng khám phá những điều mới mẻ!</p>
+  </div>
+
+  <!-- Nhạc nền tự động phát khi user tương tác -->
+  <audio id="backgroundMusic" autoplay muted loop>
+    <source src="AkumaNoKo.mp3" type="audio/mpeg">
+    Trình duyệt của bạn không hỗ trợ phát nhạc.
+  </audio>
+
+  <footer>
+    © 2025 YCN - Yêu Công Nghệ
+  </footer>
+
+  <script>
+    // Gỡ mute và phát nhạc khi người dùng click/touch bất kỳ đâu
+    function enableAudio() {
+      const audio = document.getElementById('backgroundMusic');
+      audio.muted = false;
+      audio.play().then(() => {
+        console.log("Phát nhạc thành công");
+      }).catch(err => {
+        console.warn("Không thể phát nhạc:", err);
+      });
+      document.removeEventListener('click', enableAudio);
+      document.removeEventListener('touchstart', enableAudio);
+    }
+
+    // Gắn sự kiện lần đầu tương tác
+    document.addEventListener('click', enableAudio);
+    document.addEventListener('touchstart', enableAudio);
+  </script>
+</body>
+</html>
